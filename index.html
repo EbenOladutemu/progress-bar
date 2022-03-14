@@ -150,10 +150,19 @@
     const bars = document.getElementsByClassName('progress-bar-inner');
 
     finish.addEventListener('click', () => {
-      for (let i = 0; i < bars.length; i++) {
-        const element = bars[i];
-        element.style.width = '100%'
-        element.innerHTML = '<p>100%</p>'
+      let width = 50;
+      let increase = setInterval(scene, 50)
+      function scene() {
+        if (width >= 100) {
+          clearInterval(scene)
+        } else {
+          width++
+          for (let i = 0; i < bars.length; i++) {
+            const element = bars[i];
+            element.style.width = `${width}%`
+            element.innerHTML = `<p>${width}%</p>`
+          }
+        }
       }
     })
   </script>
