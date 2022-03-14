@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress Bar</title>
+</head>
+
+<style>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  :root {
+    --green: repeating-linear-gradient( 135deg, #a7da60, #a7da60 1px, #8dd532 2px, #bae781 7px );
+    --red: repeating-linear-gradient( 135deg, #fc7361, #fc7361 1px, #ff907a 5px, #ff907a 7px );
+    --white: #fff;
+    --blue: repeating-linear-gradient( 135deg, #7ec4ea, #7ec4ea 1px, #99d1f3 4px, #99d1f3 7px );
+    --yellow: repeating-linear-gradient( 135deg, #ffcd59, #ffcd59 1px, #ffd784 4px, #ffd784 7px );
+    --grey: #a5a5a5;
+    --border: 1.5px solid;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  p {
+    margin: 0;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    font-family: Arial, 'sans-serif';
+    font-weight: 600;
+    color: #626262;
+  }
+
+  button {
+    margin-top: 2rem;
+    background: #18bc9c;
+    outline: none;
+    border-radius: 0.5rem;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    color: var(--white);
+    cursor: pointer;
+  }
+
+  .progress-bar {
+    width: 90%;
+    height: 2.1rem;
+    background: #EFEFEF;
+    border-radius: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .progress-bar-inner {
+    height: 2rem;
+    width: 50%;
+    border-radius: 1rem;
+  }
+
+  .green {
+    background: var(--green);
+    border: var(--border);
+    border-color: #9da395;
+    box-shadow: inset 0px 0px 3px 0px #728d4e;
+  }
+
+  .red {
+    background: var(--red);
+    border: var(--border);
+    border-color: #a73e37;
+    box-shadow: inset 0px 0px 3px 0px #a73e37;
+  }
+
+  .white {
+    background: var(--white);
+    border: var(--border);
+    border-color: var(--grey);
+    box-shadow: inset 0px 0px 3px 0px var(--grey);
+  }
+
+  .blue {
+    background: var(--blue);
+    border: var(--border);
+    border-color: #4d8eba;
+    box-shadow: inset 0px 0px 3px 0px #668ea9;
+  }
+
+  .yellow {
+    background: var(--yellow);
+    border: var(--border);
+    border-color: #c49735;
+    box-shadow: inset 0px 0px 3px 0px #af8d4b;
+  }
+</style>
+
+<body>
+  <div class="progress-bar">
+    <div class="progress-bar-inner green">
+      <p>50%</p>
+    </div>
+  </div>
+
+  <div class="progress-bar">
+    <div class="progress-bar-inner red">
+      <p>50%</p>
+    </div>
+  </div>
+
+  <div class="progress-bar">
+    <div class="progress-bar-inner white">
+      <p>50%</p>
+    </div>
+  </div>
+
+  <div class="progress-bar">
+    <div class="progress-bar-inner blue">
+      <p>50%</p>
+    </div>
+  </div>
+
+  <div class="progress-bar">
+    <div class="progress-bar-inner yellow">
+      <p>50%</p>
+    </div>
+  </div>
+
+  <button id="finish">Finish</button>
+
+  <script>
+    const finish = document.getElementById('finish');
+    const bars = document.getElementsByClassName('progress-bar-inner');
+
+    finish.addEventListener('click', () => {
+      for (let i = 0; i < bars.length; i++) {
+        const element = bars[i];
+        element.style.width = '100%'
+        element.innerHTML = '<p>100%</p>'
+        console.log(element.innerText);
+      }
+    })
+  </script>
+</body>
+
+
+</html>
